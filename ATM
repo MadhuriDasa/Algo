@@ -1,0 +1,34 @@
+import java.math.BigDecimal;
+
+public class ATM
+{
+
+	public static void main(String[] args) {
+		BigDecimal amount = new BigDecimal(110);
+		BigDecimal initialBalance = new BigDecimal(120);
+		getFinalBalance(amount, initialBalance);
+
+	}
+	
+	private static BigDecimal getFinalBalance(BigDecimal amount,BigDecimal initialBalance) {
+		BigDecimal finalBalance =  new BigDecimal(0);
+		if(amount.intValue() > initialBalance.intValue()) {
+			System.out.println("Insufficient balance");
+			return finalBalance;
+		}
+		
+		if(amount.intValue()%5 != 0) {
+			System.out.println("Not multiple of 5");
+			return finalBalance;
+		}
+		
+		if(amount.intValue() == initialBalance.intValue()) {
+			System.out.println("Cannot withdraw");
+			return finalBalance;
+		}
+		finalBalance = new BigDecimal(initialBalance.intValue() - amount.intValue() - new BigDecimal(0.5).doubleValue());
+		System.out.println(finalBalance);
+		
+		return finalBalance;
+	}
+}
